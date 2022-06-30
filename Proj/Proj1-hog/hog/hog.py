@@ -197,6 +197,25 @@ def announce_lead_changes(score0, score1, last_leader=None):
     """
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
+    leader = None
+    if score0 > score1:
+        leader = 0
+    elif score0 < score1:
+        leader = 1
+
+    message = ""
+    if last_leader is not None:
+        if leader is not None and leader != last_leader:
+            message = f"Player {leader} takes the lead by {abs(score0 - score1)}"
+        else:
+            message = None
+    else:
+        if leader is not None:
+            message = f"Player {leader} takes the lead by {abs(score0 - score1)}"
+        else:
+            message = None
+
+    return leader, message
     # END PROBLEM 6
 
 

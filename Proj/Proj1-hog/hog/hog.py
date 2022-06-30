@@ -6,6 +6,7 @@ from math import sqrt
 
 GOAL_SCORE = 100  # The goal of Hog is to score 100 points.
 
+
 ######################
 # Phase 1: Simulator #
 ######################
@@ -23,8 +24,20 @@ def roll_dice(num_rolls, dice=six_sided):
     assert num_rolls > 0, 'Must roll at least once.'
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
-    
+    sum = 0
+    flag = False
+    while num_rolls > 0:
+        tep = dice()
+        sum += tep
+        if tep == 1:
+            flag = True
+        num_rolls -= 1
+    if flag:
+        return 1
+    else:
+        return sum
     # END PROBLEM 1
+
 
 def oink_points(player_score, opponent_score):
     """Return the points scored by player due to Oink Points.
@@ -33,7 +46,12 @@ def oink_points(player_score, opponent_score):
     opponent_score: The total score of the other player.
     """
     # BEGIN PROBLEM 2
-    "*** YOUR CODE HERE ***"
+    if opponent_score == 0 :
+        return 1
+    else :
+        a = opponent_score % 10
+        b = opponent_score // 10 % 10
+        return max(1, 2 * b - a)
     # END PROBLEM 2
 
 
@@ -176,6 +194,7 @@ def both(f, g):
     Player 0 now has 10 and now Player 1 has 17
     Player 1 takes the lead by 7
     """
+
     def say(score0, score1, player=None):
         f_player, f_message = f(score0, score1, player)
         g_player, g_message = g(score0, score1, player)
@@ -183,6 +202,7 @@ def both(f, g):
             return g_player, f_message + "\n" + g_message
         else:
             return g_player, f_message or g_message
+
     return say
 
 
@@ -204,8 +224,10 @@ def always_roll(n):
     >>> strategy(99, 99)
     5
     """
+
     def strategy(score, opponent_score):
         return n
+
     return strategy
 
 
@@ -265,10 +287,10 @@ def run_experiments():
     print('Max scoring num rolls for six-sided dice:', six_sided_max)
     print('always_roll(6) win rate:', average_win_rate(always_roll(6)))
 
-    #print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
-    #print('oink_points_strategy win rate:', average_win_rate(oink_points_strategy))
+    # print('always_roll(8) win rate:', average_win_rate(always_roll(8)))
+    # print('oink_points_strategy win rate:', average_win_rate(oink_points_strategy))
     print('pigs_on_prime_strategy win rate:', average_win_rate(pigs_on_prime_strategy))
-    #print('final_strategy win rate:', average_win_rate(final_strategy))
+    # print('final_strategy win rate:', average_win_rate(final_strategy))
     "*** You may add additional experiments as you wish ***"
 
 
@@ -299,6 +321,7 @@ def final_strategy(score, opponent_score):
     # BEGIN PROBLEM 12
     return 6  # Remove this line once implemented.
     # END PROBLEM 12
+
 
 ##########################
 # Command Line Interface #

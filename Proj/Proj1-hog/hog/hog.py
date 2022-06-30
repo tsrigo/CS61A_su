@@ -154,15 +154,22 @@ def play(strategy0, strategy1, score0=0, score1=0, dice=six_sided,
             strat0 = strategy0(score0, score1)
             score0 += take_turn(strat0, score0, score1, dice, goal)
             score0 += pigs_on_prime(score0, score1)
+            leader, message = say(score0, score1, leader)
+            if message is not None:
+                print(message)
         else:
             strat1 = strategy1(score1, score0)
             score1 += take_turn(strat1, score1, score0, dice, goal)
             score1 += pigs_on_prime(score1, score0)
+            leader, message = say(score0, score1, leader)
+            if message is not None:
+                print(message)
         who = next_player(who)
     # END PROBLEM 5
     # (note that the indentation for the problem 7 prompt (***YOUR CODE HERE***) might be misleading)
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    # indeed misleading hhh, the code should be written in the "if - else" block above
     # END PROBLEM 7
     return score0, score1
 

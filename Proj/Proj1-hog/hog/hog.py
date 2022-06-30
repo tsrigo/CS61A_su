@@ -73,6 +73,10 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided, goal=GOAL
     assert max(player_score, opponent_score) < goal, 'The game should be over.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if num_rolls == 0:
+        return oink_points(player_score, opponent_score)
+    else:
+        return roll_dice(num_rolls, dice)
     # END PROBLEM 3
 
 
@@ -97,6 +101,13 @@ def pigs_on_prime(player_score, opponent_score):
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    tep = player_score
+    if is_prime(player_score):
+        while not (is_prime(tep + 1)):
+            tep += 1
+        tep += 1
+    return tep - player_score
+
     # END PROBLEM 4
 
 

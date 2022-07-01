@@ -315,6 +315,23 @@ def max_scoring_num_rolls(dice=six_sided, total_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    ans = 1
+    maxscore = 0
+    """
+    note:
+    1. You should deeply understand higher-order-function so that you can master the sophisticated idea.
+    2. Remember to update the maxscore after each iteration.
+    """
+
+    # get_avr = make_averaged(roll_dice, total_samples)
+    # now = get_avr(num, dice)
+
+    for num in range(1, 11):
+        now = make_averaged(roll_dice, total_samples)(num, dice)
+        if now > maxscore:
+            ans = num
+            maxscore = now
+    return ans
     # END PROBLEM 9
 
 

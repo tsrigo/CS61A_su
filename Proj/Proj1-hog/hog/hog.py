@@ -355,7 +355,10 @@ def oink_points_strategy(score, opponent_score, threshold=8, num_rolls=6):
     returns NUM_ROLLS otherwise.
     """
     # BEGIN PROBLEM 10
-    return 6  # Remove this line once implemented.
+    if oink_points(score, opponent_score) >= threshold:
+        return 0
+    else:
+        return num_rolls
     # END PROBLEM 10
 
 
@@ -365,7 +368,18 @@ def pigs_on_prime_strategy(score, opponent_score, threshold=8, num_rolls=6):
     Otherwise, it returns NUM_ROLLS.
     """
     # BEGIN PROBLEM 11
-    return 6  # Remove this line once implemented.
+    """
+    important!
+    1. pigs_on_prime should check the score added with oink_points because of the game rule.
+    2. According to this strategy rule, we have to consider two possible conditions.
+    3. Noted that "At least" == ">=". Don't forget the equal sign.
+    """
+    t1 = oink_points(score, opponent_score)
+    t2 = pigs_on_prime(score + t1, opponent_score)
+    if t1 + t2 >= threshold or t2 > 0:
+        return 0
+    else:
+        return num_rolls
     # END PROBLEM 11
 
 

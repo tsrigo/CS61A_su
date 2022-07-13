@@ -1,5 +1,6 @@
 """Typing test implementation"""
 
+from dataclasses import replace
 from ftplib import parse227
 from utils import lower, split, remove_punctuation, lines_from_file
 from ucb import main, interact, trace
@@ -56,6 +57,21 @@ def about(topic):
     assert all([lower(x) == x for x in topic]), 'topics should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    wash = "\'\".!?,:;!@#$%^&*()"
+
+    def func (s):
+        for i in s :
+            i = lower(i)
+            if i == ' ':
+                continue
+            elif i < 'a' or i > 'z':
+                s = s.replace(i, '')
+                
+        for i in topic:
+            if i in [lower(x) for x in s.split()]:
+                return True
+        return False
+    return func
     # END PROBLEM 2
 
 
@@ -86,7 +102,17 @@ def accuracy(typed, reference):
     reference_words = split(reference)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
-    # END PROBLEM 3
+    if len(typed_words) == 0 and len(reference_words) == 0:
+        return 100.0
+    
+    if len(typed_words) == 0 or len(reference_words) == 0:
+        return 0.0
+
+    cnt = 0
+    for i in range(0, min(len(reference_words), len(typed_words))):
+        if typed_words[i] == reference_words[i]:
+            cnt += 1
+    return cnt * 100 / len(typed_words)
 
 
 def wpm(typed, elapsed):
@@ -100,10 +126,13 @@ def wpm(typed, elapsed):
     24.0
     >>> wpm('0123456789',60)
     2.0
+    >>> wpm('12345', 1)
+    60.0
     """
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return len(typed) / 5 / elapsed * 60
     # END PROBLEM 4
 
 

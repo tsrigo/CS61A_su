@@ -58,12 +58,10 @@ def hailstone(n):
     1
     """
     "*** YOUR CODE HERE ***"
-    yield n
-    
-    if n == 1:
-        return
-
-    if n % 2 == 0:
-        yield from hailstone(n // 2)
-    else:
-        yield from hailstone(3 * n + 1)
+    while n != 1:
+        yield n
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = n * 3 + 1
+    yield 1

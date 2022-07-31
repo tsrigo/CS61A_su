@@ -22,6 +22,15 @@ def merge(lst1, lst2):
     [2, 2, 3, 4, 4, 6]
     """
     "*** YOUR CODE HERE ***"
+    if len(lst1) == 0:
+        return lst2
+    elif len(lst2) == 0:
+        return lst1
+    
+    if lst1[0] >= lst2[0]:
+        return [lst2[0]] + merge(lst1, lst2[1:])
+    else:
+        return [lst1[0]] + merge(lst1[1:], lst2)
 
 
 def remove_odd_indices(lst, odd):

@@ -1,3 +1,4 @@
+'I hava 0.5 Mayo left'
 HW_SOURCE_FILE = __file__
 
 
@@ -58,6 +59,15 @@ def remove_odd_indices(lst, odd):
     True
     """
     "*** YOUR CODE HERE ***"
+    if len(lst) == 0:
+        return []
+    
+    if odd == True:
+        st = [lst[0]]
+    else:
+        st = []
+        
+    return st + remove_odd_indices(lst[1:], not odd)
 
 
 class SmartFridge:
@@ -78,15 +88,24 @@ class SmartFridge:
     >>> fridgey.add_item('Eggs', 1)
     'I now have 1 Eggs'
     """
-
     def __init__(self):
         self.items = {}
-
     def add_item(self, item, quantity):
         "*** YOUR CODE HERE ***"
-
+        if self.items.get(item) == None:
+            self.items[item] = quantity
+        else:
+            self.items[item] += quantity
+        return f'I now have {self.items[item]} {item}'
+        
     def use_item(self, item, quantity):
         "*** YOUR CODE HERE ***"
+        if self.items[item] > quantity:
+            self.items[item] -= quantity
+            return f'I have {self.items[item]} {item} left'
+        else:
+            self.items[item] = 0
+            return f'Oh no, we need more {item}!'
 
 
 class VendingMachine:

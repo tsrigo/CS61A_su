@@ -45,10 +45,13 @@ def scheme_read(src):
     if val == 'nil':
         # BEGIN PROBLEM 2
         "*** YOUR CODE HERE ***"
+        return nil
         # END PROBLEM 2
     elif val == '(':
         # BEGIN PROBLEM 2
         "*** YOUR CODE HERE ***"
+        res = read_tail(src)
+        return res
         # END PROBLEM 2
     elif val == "'":
         # BEGIN PROBLEM 3
@@ -74,10 +77,15 @@ def read_tail(src):
         elif src.current() == ')':
             # BEGIN PROBLEM 2
             "*** YOUR CODE HERE ***"
+            src.pop_first()
+            return nil
             # END PROBLEM 2
         else:
             # BEGIN PROBLEM 2
             "*** YOUR CODE HERE ***"
+            first = scheme_read(src)
+            rest = read_tail(src)
+            return Pair(first, rest)
             # END PROBLEM 2
     except EOFError:
         raise SyntaxError('unexpected end of file')

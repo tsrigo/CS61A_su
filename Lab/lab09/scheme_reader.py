@@ -56,6 +56,8 @@ def scheme_read(src):
     elif val == "'":
         # BEGIN PROBLEM 3
         "*** YOUR CODE HERE ***"
+        res = scheme_read(src)
+        return Pair('quote', Pair(res, nil))
         # END PROBLEM 3
     elif val not in DELIMITERS:
         return val

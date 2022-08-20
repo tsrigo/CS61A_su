@@ -5,6 +5,7 @@ from scheme_utils import *
 from ucb import main, trace
 
 import scheme_forms
+import scheme_builtins
 
 ##############
 # Eval/Apply #
@@ -35,6 +36,9 @@ def scheme_eval(expr, env, _=None):  # Optional third argument is ignored
     else:
         # BEGIN PROBLEM 3
         "*** YOUR CODE HERE ***"
+        procedure = scheme_eval(first, env)
+        args = rest.map(lambda x: scheme_eval(x, env))
+        return scheme_apply(procedure, args, env)
         # END PROBLEM 3
 
 

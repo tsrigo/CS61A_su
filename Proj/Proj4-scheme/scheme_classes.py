@@ -36,8 +36,13 @@ class Frame:
         """Return the value bound to SYMBOL. Errors if SYMBOL is not found."""
         # BEGIN PROBLEM 1
         "*** YOUR CODE HERE ***"
+        ans = None
         if symbol in self.bindings:
-            return self.bindings[symbol]
+            ans = self.bindings[symbol]
+        if (self.parent is not None) and (ans is None):
+            ans = self.parent.lookup(symbol)
+        if ans is not None:
+            return ans
         # END PROBLEM 1
         raise SchemeError('unknown identifier: {0}'.format(symbol))
 

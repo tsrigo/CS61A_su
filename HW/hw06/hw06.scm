@@ -1,8 +1,12 @@
 (define (cddr s) (cdr (cdr s)))
 
-(define (cadr s) 'YOUR-CODE-HERE)
+(define (cadr s) 
+    (car (cdr s))
+)
 
-(define (caddr s) 'YOUR-CODE-HERE)
+(define (caddr s) 
+    (car (cddr s))
+)
 
 (define (interleave lst1 lst2) 'YOUR-CODE-HERE)
 

@@ -33,6 +33,17 @@
     (help lst1 lst2 nil 1)
 )
 
-(define (my-filter pred lst) 'YOUR-CODE-HERE)
+(define (my-filter pred lst) 
+    (define (help pred lst ans)
+        (cond 
+            ((null? lst) ans)
+            (else 
+                (if (pred (car lst)) (define ans (append ans (list (car lst)))))
+                (help pred (cdr lst) ans)
+            )
+        )
+    )
+    (help pred lst nil)
+)
 
 (define (concatenate s) 'YOUR-CODE-HERE)

@@ -54,7 +54,7 @@ def do_define_form(expressions, env):
 
         exp = Pair(formals, body)
         pro = do_lambda_form(exp, env)
-        
+
         env.define(name, pro)
         return name
         # END PROBLEM 10
@@ -261,6 +261,8 @@ def do_mu_form(expressions, env):
     validate_formals(formals)
     # BEGIN PROBLEM 11
     "*** YOUR CODE HERE ***"
+    body = expressions.rest
+    return MuProcedure(formals, body)
     # END PROBLEM 11
 
 

@@ -46,4 +46,15 @@
     (help pred lst nil)
 )
 
-(define (concatenate s) 'YOUR-CODE-HERE)
+(define (concatenate s) 
+    (define (help s ans)
+        (cond 
+            ((null? s) ans)
+            (else
+                (define ans (append ans (car s)))
+                (help (cdr s) ans)
+            )
+        )
+    )
+    (help s nil)
+)

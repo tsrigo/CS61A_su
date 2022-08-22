@@ -6,10 +6,18 @@
 ;; Problem 15
 ;; Returns a list of two-element lists
 (define (enumerate s)
-  ; BEGIN PROBLEM 15
-  'replace-this-line
+  (define (help s idx ans)
+    (if (null? s)
+      ans
+      (begin 
+        (define now (list (list idx (car s))))
+        (define ans (append ans now))
+        (help (cdr s) (+ idx 1) ans)
+      )
+    )
   )
-  ; END PROBLEM 15
+  (help s 0 nil)
+)
 
 ;; Problem 16
 

@@ -6,17 +6,13 @@
 ;; Problem 15
 ;; Returns a list of two-element lists
 (define (enumerate s)
-  (define (help s idx ans)
+  (define (help s idx)
     (if (null? s)
-      ans
-      (begin 
-        (define now (list (list idx (car s))))
-        (define ans (append ans now))
-        (help (cdr s) (+ idx 1) ans)
-      )
+      nil
+      (cons (list idx (car s)) (help (cdr s) (+ idx 1)))
     )
   )
-  (help s 0 nil)
+  (help s 0)
 )
 
 ;; Problem 16

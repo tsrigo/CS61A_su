@@ -25,7 +25,7 @@ def scientific_name(name):
     >>> scientific_name("I want a pet T. rex right now")
     False
     """
-    return bool(re.search(__________, name))
+    return bool(re.search(r"^([A-Z](\.|[a-z]+)\ [a-z]+$)", name))
 
 
 import re

@@ -9,7 +9,7 @@ CREATE TABLE bluedog_songs AS
 
 
 CREATE TABLE smallest_int_having AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  select time, smallest from students group by smallest having count(*) == 1;
 
 
 CREATE TABLE matchmaker AS

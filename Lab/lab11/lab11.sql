@@ -2,10 +2,10 @@
 
 
 CREATE TABLE bluedog AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT color, pet from students where color == 'blue' and pet == 'dog';
 
 CREATE TABLE bluedog_songs AS
-  SELECT "REPLACE THIS LINE WITH YOUR SOLUTION";
+  SELECT color, pet, song from students where color == 'blue' and pet == 'dog';
 
 
 CREATE TABLE smallest_int_having AS
